@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'Marvelous3x3Regular';
-    src: url('http://merveilles.xxiivv.com/img/fonts/marvelous_3x3-webfont.eot?') format('eot'),
-         url('http://merveilles.xxiivv.com/img/fonts/marvelous_3x3-webfont.woff') format('woff'),
-         url('http://merveilles.xxiivv.com/img/fonts/marvelous_3x3-webfont.ttf') format('truetype'),
-         url('http://merveilles.xxiivv.com/img/fonts/marvelous_3x3-webfont.svg#webfont1SA3Sn0O') format('svg');
+    src: url(img/fonts/marvelous_3x3-webfont.eot) format('eot'),
+         url(img/fonts/marvelous_3x3-webfont.woff) format('woff'),
+         url(img/fonts/marvelous_3x3-webfont.ttf) format('truetype'),
+         url(img/fonts/marvelous_3x3-webfont.svg#webfont1SA3Sn0O) format('svg');
     font-weight: normal;
     font-style: normal;
 }

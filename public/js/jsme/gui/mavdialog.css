@@ -15,7 +15,7 @@
 	z-index: 300;
 	position: absolute;
 	top: 200px;
-	background: transparent url(../Demo/images/b.png);
+	background: transparent;
 	border: 0px solid #888;
 }
 	.mid-float-box {

@@ -240,6 +240,10 @@ class Game
 
     private function loadMonsters(int $floor, array &$map): array
     {
+        // Respawn dead monsters after 60 seconds
+        $respawnStmt = $this->db->prepare('DELETE FROM monsters WHERE floor = ? AND health = 0 AND `time` < ?');
+        $respawnStmt->execute([$floor, time() - 60]);
+
         $monsters = [];
         $stmt = $this->db->prepare('SELECT x, y, health FROM monsters WHERE floor = ? ORDER BY `time` DESC');
         $stmt->execute([$floor]);
@@ -394,8 +398,8 @@ class Game
         $stmt = $this->db->prepare('DELETE FROM monsters WHERE floor = ? AND x = ? AND y = ?');
         $stmt->execute([$playerf, $reqX, $reqY]);
 
-        $stmt = $this->db->prepare('INSERT INTO monsters (x, y, health, `time`, floor) VALUES (?, ?, ?, 10, ?)');
-        $stmt->execute([$reqX, $reqY, $percentHealth, $playerf]);
+        $stmt = $this->db->prepare('INSERT INTO monsters (x, y, health, `time`, floor) VALUES (?, ?, ?, ?, ?)');
+        $stmt->execute([$reqX, $reqY, $percentHealth, time(), $playerf]);
 
         return [
             'information' => [

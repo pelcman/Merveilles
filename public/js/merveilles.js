@@ -106,9 +106,8 @@ var Merveilles = {
         var track = this.getTrackForFloor(floor);
         var expected = '/audio/merveilles_' + track + '.mp3';
         if (music.getAttribute('src') !== expected) {
-            var wasPlaying = !music.paused;
             music.src = expected;
-            if (wasPlaying) music.play();
+            if (music.dataset.muted !== '1') music.play();
         }
     },
 

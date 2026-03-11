@@ -12,9 +12,10 @@ function renderAudioPlayer(string $context, int $floor = 1): void
         else                  $track = '06';
     }
     ?>
-    <audio id="music" src="/audio/merveilles_<?= $track ?>.mp3" autoplay loop preload="auto"></audio>
+    <audio id="music" src="/audio/merveilles_<?= $track ?>.mp3" loop preload="auto"></audio>
+    <script>document.getElementById('music').play().catch(function(){});</script>
     <div class="audioControls">
-        <a href="#" id="audio_toggle" onclick="var m=document.getElementById('music'); m.paused?m.play():m.pause(); return false;"></a>
+        <a href="#" id="audio_toggle" onclick="var m=document.getElementById('music'); if(m.paused){m.play();m.dataset.muted=''}else{m.pause();m.dataset.muted='1'} return false;"></a>
     </div>
     <?php
 }

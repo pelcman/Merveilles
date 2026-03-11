@@ -2,7 +2,7 @@ function MapEditor(data)
 {
 	var self = this;
 	
-	MapEditor.Utils.loadCSS('scripts/jsme/default-style.css');
+	MapEditor.Utils.loadCSS('/js/jsme/default-style.css');
 	
 	if(data['pluginStylesheet'] != null)
 	{

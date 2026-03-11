@@ -1,8 +1,9 @@
 # Merveilles
 
-Browser-based mini MMORPG. Grid dungeon crawling, monster combat, and real-time cooperative multiplayer.
+Browser-based mini MMORPG.
 
 Coding by DEEO, design by Aliceffekt (XXIIVV).
+Modded by Pelcman.
 
 ## Stack
 
@@ -20,7 +21,7 @@ setup\win\setup-db.bat     # Database only
 start-server.bat           # Start server
 ```
 
-Copy `.env_example` to `.env` and edit as needed.
+Copy `.env.example` to `.env` and edit as needed.
 
 ## Routes
 

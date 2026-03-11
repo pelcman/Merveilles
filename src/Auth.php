@@ -21,7 +21,7 @@ class Auth
 
     public function isAdmin(): bool
     {
-        $admins = ['fet', 'ika', 'y4m'];
+        $admins = ['fet', 'ika', 'y4m', 'adm', 'plm'];
         return $this->isLoggedIn() && in_array($this->currentUser(), $admins, true);
     }
 

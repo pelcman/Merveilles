@@ -31,6 +31,8 @@ div.jsME_map img.tile
 {
 	margin:0;
 	background:transparent;
+	display:inline-block;
+	vertical-align:top;
 }
 
 .jsME div.jsME_palette, .jsME div.jsME_palette div
@@ -56,6 +58,12 @@ div.jsME_palette img.tile
 	-moz-opacity:1;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+}
+
+.jsME_map div.jsME_map_row
+{
+	font-size:0;
+	line-height:0;
 }
 
 .jsME div.jsME_map div.jsME_map_container

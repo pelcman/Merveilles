@@ -230,10 +230,29 @@ var Merveilles = {
         this.Chat.init(this);
 
         // Keyboard
+        this._escTimer = null;
         window.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                if (self.Chat.opened) self.Chat.hide();
+                else self.Chat.show();
+                return;
+            }
+            if (e.key === 'Escape') {
+                if (!self._escTimer) {
+                    self._escTimer = setTimeout(function () {
+                        window.location.href = '/logout';
+                    }, 3000);
+                }
+                return;
+            }
             if (self.currentEvent !== e.key) self.fireEvent(e.key);
         });
         window.addEventListener('keyup', function (e) {
+            if (e.key === 'Escape') {
+                clearTimeout(self._escTimer);
+                self._escTimer = null;
+                return;
+            }
             self.fireEvent('stop', e.key);
         });
 

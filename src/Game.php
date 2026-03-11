@@ -146,7 +146,7 @@ class Game
             $playermsgts = time();
         }
 
-        if ((time() - $playermsgts) > 10) {
+        if ((time() - $playermsgts) > 8) {
             $playermsg = '';
         }
 
@@ -258,9 +258,9 @@ class Game
     private function loadOtherPlayers(int $floor, string $excludeName): array
     {
         $stmt = $this->db->prepare(
-            'SELECT mv_name, x, y, `save`, `kill`, hp, xp, message, avatar_head, avatar_body FROM players WHERE floor = ? AND mv_time < 10'
+            'SELECT mv_name, x, y, `save`, `kill`, hp, xp, message, avatar_head, avatar_body FROM players WHERE floor = ? AND mv_time > ?'
         );
-        $stmt->execute([$floor]);
+        $stmt->execute([$floor, time() - 30]);
 
         $players = [];
         while ($row = $stmt->fetch()) {
@@ -418,9 +418,9 @@ class Game
     private function savePlayerState(string $name, int $x, int $y, int $xp, int $hp, int $mp, int $kill, int $save, int $floor, int $maxFloor, string $message, int $msgTs): void
     {
         $stmt = $this->db->prepare(
-            'UPDATE players SET x = ?, y = ?, xp = ?, hp = ?, mp = ?, `kill` = ?, `save` = ?, floor = ?, max_floor = ?, message = ?, message_timestamp = ?, mv_time = 0 WHERE mv_name = ?'
+            'UPDATE players SET x = ?, y = ?, xp = ?, hp = ?, mp = ?, `kill` = ?, `save` = ?, floor = ?, max_floor = ?, message = ?, message_timestamp = ?, mv_time = ? WHERE mv_name = ?'
         );
-        $stmt->execute([$x, $y, $xp, $hp, $mp, $kill, $save, $floor, $maxFloor, $message, $msgTs, $name]);
+        $stmt->execute([$x, $y, $xp, $hp, $mp, $kill, $save, $floor, $maxFloor, $message, $msgTs, time(), $name]);
     }
 
     public function castSpell(string $playerName, int $spellId, array $state): bool

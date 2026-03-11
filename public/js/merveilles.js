@@ -262,7 +262,7 @@ var Merveilles = {
         this.elementGround.className = 'level' + Math.floor(this.status.level / 10) + '0 floor' + this.status.floor;
 
         this.refresh(data);
-        this.timer = setTimeout(function () { self.update(); }, 1000);
+        this.timer = setTimeout(function () { self.update(); }, 500);
     },
 
     showMessage: function (dom) {
@@ -522,7 +522,7 @@ var Merveilles = {
         }
 
         var self2 = this;
-        this.refreshTimer = setTimeout(function () { self2.refresh(); }, 1000);
+        this.refreshTimer = setTimeout(function () { self2.refresh(); }, 500);
     },
 
     showInformation: function (info, oldStatus) {
@@ -798,12 +798,12 @@ var Merveilles = {
         clearTimeout(this.timer);
 
         var self = this;
-        var delayNext = 1000;
+        var delayNext = 500;
 
         if (action === 'update' && this.moved === false) {
             this.updateWithoutMove++;
-            if (this.updateWithoutMove > 10) delayNext = 5000;
-            else if (this.updateWithoutMove > 4) delayNext = 2000;
+            if (this.updateWithoutMove > 10) delayNext = 3000;
+            else if (this.updateWithoutMove > 4) delayNext = 1500;
         } else {
             this.moved = false;
             this.updateWithoutMove = 0;

@@ -325,7 +325,7 @@ div.monstera:hover  {background-image:url('img/sprites.gif');background-position
 	background-image:url(img/world-phantom.gif);
 }
 
-#status { width: 220px;position: absolute;left: 24px;top: 296px;background: #221d20;height: 46px;overflow: hidden;background-image: url(img/ui/ui_frame_game.gif);background-repeat: no-repeat;}
+#status { width: 220px;position: absolute;left: 24px;top: 296px;background: #221d20;height: 46px;overflow: hidden;background-image: url(img/ui/ui_frame_game.gif);background-repeat: no-repeat; z-index:9001;}
 
 #status table { width: 150px;float: right;margin-top: 14px;margin-right: 20px;}
 

@@ -266,7 +266,7 @@ var Merveilles = {
                 }
                 return;
             }
-            if (self.currentEvent !== e.key) self.fireEvent(e.key);
+            if (!e.repeat && self.currentEvent !== e.key) self.fireEvent(e.key);
         });
         window.addEventListener('keyup', function (e) {
             if (e.key === 'Escape') {

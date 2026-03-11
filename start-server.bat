@@ -8,7 +8,7 @@ echo.
 :: Check PHP
 where php >nul 2>&1
 if %ERRORLEVEL% neq 0 (
-    echo [ERROR] PHP not found. Run setup.bat first.
+    echo [ERROR] PHP not found. Run setup\win\setup.bat first.
     pause
     exit /b 1
 )

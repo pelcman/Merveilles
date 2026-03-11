@@ -5,6 +5,8 @@ Write-Host " Merveilles - Database Setup"     -ForegroundColor Cyan
 Write-Host "================================" -ForegroundColor Cyan
 Write-Host ""
 
+$Root = Resolve-Path (Join-Path $PSScriptRoot "..\..")
+
 $DbHost = Read-Host "MySQL Host [localhost]"
 if ([string]::IsNullOrWhiteSpace($DbHost)) { $DbHost = "localhost" }
 
@@ -13,7 +15,7 @@ if ([string]::IsNullOrWhiteSpace($DbUser)) { $DbUser = "root" }
 
 $DbPass = Read-Host "MySQL Password (empty for none)"
 
-$SchemaPath = Join-Path $PSScriptRoot "sql\schema.sql"
+$SchemaPath = Join-Path $Root "sql\schema.sql"
 
 if (-not (Test-Path $SchemaPath)) {
     Write-Host "[ERROR] Schema file not found: $SchemaPath" -ForegroundColor Red

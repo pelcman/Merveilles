@@ -5,6 +5,8 @@ echo  Merveilles - Database Setup
 echo ================================
 echo.
 
+set "ROOT=%~dp0..\.."
+
 set DB_HOST=localhost
 set DB_USER=root
 set /p DB_HOST="MySQL Host [%DB_HOST%]: " || set DB_HOST=localhost
@@ -15,9 +17,9 @@ echo.
 echo Importing schema from sql\schema.sql ...
 
 if "%DB_PASS%"=="" (
-    mysql -h %DB_HOST% -u %DB_USER% < "%~dp0sql\schema.sql"
+    mysql -h %DB_HOST% -u %DB_USER% < "%ROOT%\sql\schema.sql"
 ) else (
-    mysql -h %DB_HOST% -u %DB_USER% -p%DB_PASS% < "%~dp0sql\schema.sql"
+    mysql -h %DB_HOST% -u %DB_USER% -p%DB_PASS% < "%ROOT%\sql\schema.sql"
 )
 
 if %ERRORLEVEL% equ 0 (

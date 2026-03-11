@@ -5,6 +5,8 @@ echo  Merveilles - Full Setup (Windows)
 echo ========================================
 echo.
 
+set "ROOT=%~dp0..\.."
+
 :: -------------------------------------------------------
 :: 1. Check / Install PHP
 :: -------------------------------------------------------
@@ -26,7 +28,7 @@ if %ERRORLEVEL% equ 0 (
         echo Manual install options:
         echo   1. winget install PHP.PHP.8.3
         echo   2. scoop install php
-        echo   3. https://windows.php.net/download/ から ZIP をダウンロードして PATH に追加
+        echo   3. Download ZIP from https://windows.php.net/download/ and add to PATH
         echo.
         pause
         exit /b 1
@@ -70,9 +72,9 @@ echo.
 echo Importing sql\schema.sql ...
 
 if "%DB_PASS%"=="" (
-    mysql -h %DB_HOST% -u %DB_USER% < "%~dp0sql\schema.sql" 2>&1
+    mysql -h %DB_HOST% -u %DB_USER% < "%ROOT%\sql\schema.sql" 2>&1
 ) else (
-    mysql -h %DB_HOST% -u %DB_USER% -p%DB_PASS% < "%~dp0sql\schema.sql" 2>&1
+    mysql -h %DB_HOST% -u %DB_USER% -p%DB_PASS% < "%ROOT%\sql\schema.sql" 2>&1
 )
 
 if %ERRORLEVEL% equ 0 (
@@ -103,4 +105,4 @@ echo.
 
 start http://localhost:%PORT%
 
-php -S localhost:%PORT% -t "%~dp0public" "%~dp0public\router.php"
+php -S localhost:%PORT% -t "%ROOT%\public" "%ROOT%\public\router.php"

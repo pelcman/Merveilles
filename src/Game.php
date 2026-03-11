@@ -146,7 +146,7 @@ class Game
             $playermsgts = time();
         }
 
-        if ((time() - $playermsgts) > 5) {
+        if ((time() - $playermsgts) > 10) {
             $playermsg = '';
         }
 

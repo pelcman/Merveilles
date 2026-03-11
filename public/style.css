@@ -47,7 +47,7 @@ input::-webkit-input-placeholder { color:#fff; opacity:0.1;}
 #ui_right_chat		{ top:42px}
 #ui_right_logout	{ top:278px}
 
-.clientPortable   	{ background-image: url(img/ui/ui_frame.gif); background-repeat: no-repeat; background-position: 16px 20px; height: 420px; position: absolute; width: 590px; z-index:9000;}
+.clientPortable   	{ background-image: url(img/ui/ui_frame.gif); background-repeat: no-repeat; background-position: 16px 20px; height: 420px; position: absolute; width: 590px;}
 .window    			{ background-position:-0px -128px; position:absolute; width:176px; height:64px;background-image:url('img/ui.gif');  top:80px; left:48px; background-repeat:no-repeat; z-index:1000;}
 .message 			{ border: 2px solid #312a2f;position: absolute;background: #fff;z-index: 1000;bottom: 4px;text-align: center;width: 500px;left: 4px;}
 .clickable 			{ cursor:hand; cursor:pointer; z-index:13; }
@@ -325,7 +325,7 @@ div.monstera:hover  {background-image:url('img/sprites.gif');background-position
 	background-image:url(img/world-phantom.gif);
 }
 
-#status { width: 220px;position: absolute;left: 24px;top: 296px;background: #221d20;height: 46px;overflow: hidden;background-image: url(img/ui/ui_frame_game.gif);background-repeat: no-repeat; z-index:9001;}
+#status { width: 220px;position: absolute;left: 24px;top: 296px;background: #221d20;height: 46px;overflow: hidden;background-image: url(img/ui/ui_frame_game.gif);background-repeat: no-repeat;}
 
 #status table { width: 150px;float: right;margin-top: 14px;margin-right: 20px;}
 

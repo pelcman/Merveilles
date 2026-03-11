@@ -29,8 +29,9 @@ require_once __DIR__ . '/partials/audio.php';
             <input type="password" name="password" maxlength="3" size="3" class="pwd" placeholder="pwd">
             <input type="submit" name="submit" value="" class="sub">
             <span>
-                <a href="http://deeo.fr" target="_blank" style="color:#6c5c67">DEEO</a> +
-                <a href="http://xxiivv.com" target="_blank" style="color:#6c5c67">XXIIVV</a>
+                <a href="about:blank" target="_blank" style="color:#6c5c67">DEEO</a> ,
+                <a href="http://xxiivv.com" target="_blank" style="color:#6c5c67">XXIIVV</a> ,
+                <a href="about:blank" target="_blank" style="color:#6c5c67">OLDHOME</a>
             </span>
         </form>
     </div>

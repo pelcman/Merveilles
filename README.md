@@ -3,7 +3,7 @@
 Browser-based mini MMORPG.
 
 Coding by DEEO, design by Aliceffekt (XXIIVV).
-Modded by Pelcman.
+Modded by Pelcman (OLDHOME).
 
 ## Stack
 

@@ -703,9 +703,12 @@ var Merveilles = {
 
             doTimer = true;
 
+            var noclip = this.status.noclip;
             var walkable = function (t) { return t < 1 || t === 3 || t === 8 || t === 7 || t === 9 || t === 4 || t === 5 || t === 10 || t === 11; };
 
-            if (diag && !walkable(adj1) && !walkable(adj2)) {
+            if (noclip) {
+                this.move(newX, newY);
+            } else if (diag && !walkable(adj1) && !walkable(adj2)) {
                 doTimer = false;
             } else if (tile < 1 || tile === 3 || tile === 8 || tile === 7) {
                 this.move(newX, newY);

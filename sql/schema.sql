@@ -30,6 +30,7 @@ CREATE TABLE `players` (
     `warp2`             TINYINT      NOT NULL DEFAULT 0,
     `warp3`             TINYINT      NOT NULL DEFAULT 0,
     `warp4`             TINYINT      NOT NULL DEFAULT 0,
+    `noclip`            TINYINT      NOT NULL DEFAULT 0,
     `mv_time`           INT          NOT NULL DEFAULT 0,
     PRIMARY KEY (`id`),
     INDEX `idx_floor` (`floor`),

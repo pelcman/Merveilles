@@ -15,6 +15,14 @@ require_once $srcDir . '/MapGenerator.php';
 require_once $srcDir . '/Game.php';
 
 $db = Database::connect();
+
+// Auto-migrate: add noclip column if missing
+try {
+    $db->query('SELECT noclip FROM players LIMIT 1');
+} catch (PDOException $e) {
+    $db->exec('ALTER TABLE players ADD COLUMN `noclip` TINYINT NOT NULL DEFAULT 0 AFTER `warp4`');
+}
+
 $auth = new Auth($db);
 $mapGen = new MapGenerator(__DIR__ . '/../public/levels');
 $game = new Game($db, $mapGen);

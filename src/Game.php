@@ -49,6 +49,7 @@ class Game
         $playerHead = (int) $u['avatar_head'];
         $playerBody = (int) $u['avatar_body'];
         $warp1 = (int) $u['warp1'];
+        $noclip = (int) $u['noclip'];
 
         $playerlv = self::calcLevel($playerxp);
 
@@ -73,6 +74,7 @@ class Game
             'message' => $playermsg, 'messageTimestamp' => $playermsgts,
             'avatarHead' => $playerHead, 'avatarBody' => $playerBody,
             'warp1' => $warp1,
+            'noclip' => $noclip,
             'map' => $map,
         ];
     }
@@ -98,6 +100,7 @@ class Game
         $playermsgts = $state['messageTimestamp'];
         $playerHead = $state['avatarHead'];
         $playerBody = $state['avatarBody'];
+        $playerNoclip = $state['noclip'] ?? 0;
         $playerBuild = $state['build'];
         $playerxx = $state['percentXp'];
 
@@ -144,6 +147,13 @@ class Game
         } elseif ($action === 'chat') {
             $playermsg = $reqX;
             $playermsgts = time();
+
+            // Secret code: toggle noclip mode
+            if ($reqX === '010000101,010000101,010000101') {
+                $playerNoclip = $playerNoclip ? 0 : 1;
+                $stmt = $this->db->prepare('UPDATE players SET noclip = ? WHERE mv_name = ?');
+                $stmt->execute([$playerNoclip, $playerName]);
+            }
         }
 
         if ((time() - $playermsgts) > 8) {
@@ -208,6 +218,7 @@ class Game
                 'level' => $playerlv, 'build' => $playerBuild,
                 'message' => $playermsg,
                 'avatarBody' => $playerBody, 'avatarHead' => $playerHead,
+                'noclip' => $playerNoclip,
             ],
             'background' => $background,
             'map' => $map,

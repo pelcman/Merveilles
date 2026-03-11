@@ -13,7 +13,7 @@ function renderAudioPlayer(string $context, int $floor = 1): void
     }
     ?>
     <audio id="music" src="/audio/merveilles_<?= $track ?>.mp3" loop preload="auto"></audio>
-    <script>document.getElementById('music').play().catch(function(){});</script>
+    <script>var _m=document.getElementById('music');_m.volume=0.1;_m.play().catch(function(){});</script>
     <div class="audioControls">
         <a href="#" id="audio_toggle" onclick="var m=document.getElementById('music'); if(m.paused){m.play();m.dataset.muted=''}else{m.pause();m.dataset.muted='1'} return false;"></a>
     </div>

@@ -89,7 +89,12 @@ var Merveilles = {
         };
     },
 
-    log: function () {},
+    log: function (action, detail) {
+        var name = this.status && this.status.name ? this.status.name : '???';
+        var msg = '[' + name + '] ' + action;
+        if (detail !== undefined) msg += ' | ' + detail;
+        console.log(msg);
+    },
 
     getTrackForFloor: function (floor) {
         if (floor < 3)  return '01';
@@ -346,12 +351,15 @@ var Merveilles = {
         this.elementGround.className = 'level' + this.status.level + ' floor' + this.status.floor;
 
         if (oldStatus.floor !== this.status.floor) {
+            this.log('floor', 'moved to floor ' + this.status.floor);
             this.switchBGM(this.status.floor);
         }
 
         if (this.status.hp > 0) {
+            if (this.isDead) this.log('revive', 'hp: ' + this.status.hp);
             this.isDead = false;
         } else {
+            if (!this.isDead) this.log('death', 'hp reached 0');
             this.isDead = true;
             this.elementGround.className += ' phantom';
         }
@@ -738,6 +746,7 @@ var Merveilles = {
     },
 
     takeStair: function (x, y) {
+        this.log('stair', 'at (' + x + ', ' + y + ')');
         this.request('stair', x, y, this.takeStairCallback);
     },
     takeStairCallback: function (data) {
@@ -746,6 +755,7 @@ var Merveilles = {
     },
 
     heal: function (name) {
+        this.log('heal', 'target: ' + name);
         this.request('heal', name, name, this.healCallback);
     },
     healCallback: function (data) {
@@ -754,6 +764,7 @@ var Merveilles = {
     },
 
     triggerSpecial: function (special) {
+        this.log('special', special.message || 'portal to floor ' + special.toFloor);
         if (special.message !== '') {
             this.message(special.message);
         } else if (special.toFloor > 0) {
@@ -767,6 +778,7 @@ var Merveilles = {
 
     move: function (x, y) {
         if (!this.requestEnable) return;
+        this.log('move', 'to (' + x + ', ' + y + ')');
 
         var data = { status: Object.assign({}, this.status) };
         data.status.x = x;
@@ -792,6 +804,7 @@ var Merveilles = {
 
     attack: function (x, y) {
         if (this.isDead) return;
+        this.log('attack', 'target (' + x + ', ' + y + ')');
         this.request('attack', x, y, this.attackCallback);
     },
     attackCallback: function (data) {
@@ -931,6 +944,7 @@ Merveilles.Chat = {
     },
     request: function () {
         var self = this;
+        this.parent.log('chat', 'send message');
         this.parent.request('chat', this.value.join(','), 0, function (data) {
             self.hide();
             self.parent.refresh(data, true);

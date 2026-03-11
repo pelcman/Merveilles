@@ -200,6 +200,7 @@ class Game
 
         $data = [
             'status' => [
+                'name' => $playerName,
                 'x' => $playerx, 'y' => $playery,
                 'floor' => $playerf, 'maxFloor' => $playermf, 'section' => $section,
                 'hp' => $playerhp, 'mp' => $playermp,

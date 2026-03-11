@@ -1,6 +1,11 @@
 <?php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($__bootstrapLoaded)) return;
+$__bootstrapLoaded = true;
 
 $srcDir = __DIR__;
 require_once $srcDir . '/Database.php';

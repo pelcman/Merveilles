@@ -47,7 +47,7 @@ input::-webkit-input-placeholder { color:#fff; opacity:0.1;}
 #ui_right_chat		{ top:42px}
 #ui_right_logout	{ top:278px}
 
-.clientPortable   	{ background-image: url(img/ui/ui_frame.gif); background-repeat: no-repeat; background-position: 16px 20px; height: 420px; position: absolute; width: 590px;}
+.clientPortable   	{ background-image: url(img/ui/ui_frame.gif); background-repeat: no-repeat; background-position: 16px 20px; height: 420px; position: absolute; width: 590px; z-index:9000;}
 .window    			{ background-position:-0px -128px; position:absolute; width:176px; height:64px;background-image:url('img/ui.gif');  top:80px; left:48px; background-repeat:no-repeat; z-index:1000;}
 .message 			{ border: 2px solid #312a2f;position: absolute;background: #fff;z-index: 1000;bottom: 4px;text-align: center;width: 500px;left: 4px;}
 .clickable 			{ cursor:hand; cursor:pointer; z-index:13; }

@@ -91,6 +91,27 @@ var Merveilles = {
 
     log: function () {},
 
+    getTrackForFloor: function (floor) {
+        if (floor < 3)  return '01';
+        if (floor < 4)  return '02';
+        if (floor < 9)  return '03';
+        if (floor < 14) return '04';
+        if (floor < 24) return '05';
+        return '06';
+    },
+
+    switchBGM: function (floor) {
+        var music = document.getElementById('music');
+        if (!music) return;
+        var track = this.getTrackForFloor(floor);
+        var expected = '/audio/merveilles_' + track + '.mp3';
+        if (music.getAttribute('src') !== expected) {
+            var wasPlaying = !music.paused;
+            music.src = expected;
+            if (wasPlaying) music.play();
+        }
+    },
+
     init: function (data) {
         var self = this;
         var width = this.viewport.x * 16;
@@ -324,6 +345,10 @@ var Merveilles = {
         }
 
         this.elementGround.className = 'level' + this.status.level + ' floor' + this.status.floor;
+
+        if (oldStatus.floor !== this.status.floor) {
+            this.switchBGM(this.status.floor);
+        }
 
         if (this.status.hp > 0) {
             this.isDead = false;

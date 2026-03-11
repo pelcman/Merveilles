@@ -15,13 +15,16 @@
     <title>Merveilles Portable</title>
 </head>
 <body id="body">
-    <div class="<?= htmlspecialchars($classClient) ?>">
+    <div class="clientPortable <?= htmlspecialchars($classClient) ?>">
         <a href="#" class="ui_rightbtn" id="ui_right_chat" onclick="toggle_visibility('guide');"></a>
         <a href="#" class="ui_rightbtn" id="ui_right_map" onclick="toggle_visibility('spellbook');"></a>
         <a href="/logout" class="ui_rightbtn" id="ui_right_logout"></a>
 
         <?php require __DIR__ . '/partials/guide.php'; ?>
         <?php require __DIR__ . '/partials/spellbook.php'; ?>
+
+        <?php require_once __DIR__ . '/partials/audio.php'; ?>
+        <?php renderAudioPlayer('game', $state['floor']); ?>
 
         <script>
             Merveilles.setViewport(<?= $width ?>, <?= $height ?>);
